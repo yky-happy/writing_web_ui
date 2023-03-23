@@ -1,3 +1,13 @@
+const path = require('path');
+
 module.exports = {
-  transpileDependencies: []
+  transpileDependencies: [],
+  
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src/'),
+      },
+    },
+  },
 };

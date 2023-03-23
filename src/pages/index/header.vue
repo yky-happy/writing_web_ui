@@ -8,34 +8,41 @@
         探索用 AI 技术提升写作者的写作效率和创作体验（在线体验推荐使用 Chrome 或 Microsoft Edge 浏览器）
       </p>
       <div id = "footer">
-        <a class = "button">
+        <a class = "button" @click="download">
           <i class = "el-icon-download"></i>
-          <p>客户端下载</p>
+          <p >客户端下载</p>
         </a>
         <router-link to="/demo" class="button">
           <i class = "el-icon-edit"></i>
           <p>在线体验</p>
         </router-link>
       </div>
+      <mydialog v-model="dialogVisible"/>
     </el-main>
   </el-container>
 </template>
 
 <script>
   import myheader from '@/components/header.vue';
+  import mydialog from './dialog.vue';
   export default {
-    name: 'header',
+    name: 'app-header',
     components: {
-      myheader
+      myheader,
+      mydialog
     },
     data: function() {
       return {
-        isactive: true
+        isactive: true,
+        dialogVisible: false
       };
     },
     methods: {
       change_language: function() {
         this.isactive = !this.isactive;
+      },
+      download: function() {
+        this.dialogVisible = !this.dialogVisible;
       }
     }
   };

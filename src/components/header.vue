@@ -2,17 +2,24 @@
   <el-header id = "header" height = "118px">
     <el-row type = "flex" justify = "space-between" align = "middle">
       <router-link to="/">
-        <img src = "@/assets/logo.png" alt = "" id = "logo">
+        <img src = "@/assets/logo-demo.png" alt = "" id = "logo" v-if="isdemo">
+        <img src = "@/assets/logo.png" alt = "" id = "logo" v-else>
       </router-link>
       <div id = "menu">
-        <router-link to="/demo">
+        <router-link to="/demo" style="text-decoration: none;">
           <div id = "introduction">在线体验</div>
         </router-link>
-        <ul id = "language">
+        <ul id = "language" v-if="isdemo">
+          <li class = "demo_active">Language：</li>
+          <li :class="{ demo_active: isactive }" @click="change_language">中</li>
+          <li id = "line"></li>
+          <li :class="{ demo_active: !isactive }" @click="change_language">EN</li>
+        </ul>
+        <ul id = "language" v-else>
           <li class = "active">Language：</li>
           <li :class="{ active: isactive }" @click="change_language">中</li>
           <li id = "line"></li>
-          <li :class="{ active: !isactive }">EN</li>
+          <li :class="{ active: !isactive }" @click="change_language">EN</li>
         </ul>
       </div>
     </el-row>
@@ -21,7 +28,13 @@
 
 <script>
   export default {
-    name: 'header',
+    name: 'myheader',
+    props: {
+      isdemo:{
+        type: Boolean,
+        default: false
+      }
+    },
     data: function() {
       return {
         isactive: true
@@ -74,11 +87,15 @@
           color: #fff;
         }
         
+        .demo_active{
+          color: #333;
+        }
+        
         #line {
           margin: 0 8px;
-          width: 1px;
+          width: 2px;
           height: 15.26px;
-          background: #e5e9eb;
+          background: rgb(121,121,121);
           opacity: .3;
           cursor: inherit;
         }

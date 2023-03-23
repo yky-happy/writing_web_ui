@@ -14,7 +14,7 @@
           <ul id = "icon-main-list">
             <li v-for = "(values,index) in icon_list" :key = "index">
               <img :src = "values.img" alt = "img">
-              <div class = "icon-main-list-content">
+              <div class = "icon-main-list-content" style="{ backgroundColor:values.color }">
                 <h3>{{ values.title }}</h3>
                 <p v-for = "(desc,index) in values.desc">{{ desc }}</p>
               </div>
@@ -53,12 +53,14 @@
       </div>
       <p id = "copyring">Copyright © 1998 - 2022 Tencent. All Rights Reserved.</p>
     </el-footer>
+    
   </div>
 </template>
 
 <script>
+
   export default {
-    name: 'main',
+    name: 'app-main',
     data() {
       return {
         icon_list: [
@@ -69,6 +71,7 @@
               '中文纠错',
               '英文纠错',
             ],
+            color:"#E2EDFE"
           },
           {
             img: require('@/assets/index/icon-2.png'),
@@ -78,6 +81,7 @@
               '网络例句',
               'AI续写',
             ],
+            color:"#E3F6F0"
           },
           {
             img: require('@/assets/index/icon-3.png'),
@@ -87,6 +91,7 @@
               '句子改写',
               '句子扩写',
             ],
+            color:"#F8F3E7"
           },
           {
             img: require('@/assets/index/icon-4.png'),
@@ -96,6 +101,7 @@
               '句子推荐',
               '句子生成',
             ],
+            color:"#EBE9FC"
           },
         ],
         text_boxs: [

@@ -1,25 +1,25 @@
 <template>
   <el-header id = "header" height = "118px">
-    <el-row type = "flex" justify = "space-between" align = "middle">
-      <router-link to="/">
-        <img src = "@/assets/logo-demo.png" alt = "" id = "logo" v-if="isdemo">
-        <img src = "@/assets/logo.png" alt = "" id = "logo" v-else>
+    <el-row align = "middle" justify = "space-between" type = "flex">
+      <router-link to = "/">
+        <img v-if = "isdemo" id = "logo" alt = "" src = "@/assets/logo-demo.png">
+        <img v-else id = "logo" alt = "" src = "@/assets/logo.png">
       </router-link>
       <div id = "menu">
-        <router-link to="/demo" style="text-decoration: none;">
+        <router-link style = "text-decoration: none;" to = "/demo">
           <div id = "introduction">在线体验</div>
         </router-link>
-        <ul id = "language" v-if="isdemo">
+        <ul v-if = "isdemo" id = "language">
           <li class = "demo_active">Language：</li>
-          <li :class="{ demo_active: isactive }" @click="change_language">中</li>
+          <li :class = "{ demo_active: isactive }" @click = "change_language">中</li>
           <li id = "line"></li>
-          <li :class="{ demo_active: !isactive }" @click="change_language">EN</li>
+          <li :class = "{ demo_active: !isactive }" @click = "change_language">EN</li>
         </ul>
-        <ul id = "language" v-else>
+        <ul v-else id = "language">
           <li class = "active">Language：</li>
-          <li :class="{ active: isactive }" @click="change_language">中</li>
+          <li :class = "{ active: isactive }" @click = "change_language">中</li>
           <li id = "line"></li>
-          <li :class="{ active: !isactive }" @click="change_language">EN</li>
+          <li :class = "{ active: !isactive }" @click = "change_language">EN</li>
         </ul>
       </div>
     </el-row>
@@ -30,25 +30,25 @@
   export default {
     name: 'myheader',
     props: {
-      isdemo:{
+      isdemo: {
         type: Boolean,
-        default: false
-      }
+        default: false,
+      },
     },
     data: function() {
       return {
-        isactive: true
+        isactive: true,
       };
     },
     methods: {
       change_language: function() {
         this.isactive = !this.isactive;
-      }
-    }
+      },
+    },
   };
 </script>
 
-<style scoped lang = "scss">
+<style lang = "scss" scoped>
   
   #header {
     width: 100%;
@@ -87,7 +87,7 @@
           color: #fff;
         }
         
-        .demo_active{
+        .demo_active {
           color: #333;
         }
         
@@ -95,7 +95,7 @@
           margin: 0 8px;
           width: 2px;
           height: 15.26px;
-          background: rgb(121,121,121);
+          background: rgb(121, 121, 121);
           opacity: .3;
           cursor: inherit;
         }
@@ -111,5 +111,5 @@
     }
     
   }
-  
+
 </style>

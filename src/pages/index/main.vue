@@ -1,64 +1,71 @@
 <template>
   <div>
     <el-container>
-      <el-header id = "header">
-        <p id = "title">智能写作，写你所想</p>
-        <p id = "subtitle">
+      <!-- 头部 -->
+      <el-header id="header">
+        <p id="title">智能写作，写你所想</p>
+        <p id="subtitle">
           腾讯 AI Lab 研发的智能创作助手支持通用版和学术版两个版本，
           智能创作助手提供智能纠错、文本补全、文本改写、文本扩写、词语推荐、句子推荐与生成等功能，帮助您轻松完成中英文写作，提高写作效率
         </p>
       </el-header>
-      <el-main>
-        
-        <el-row id = "icon-main">
-          <ul id = "icon-main-list">
-            <li v-for = "(values,index) in icon_list" :key = "index">
-              <img :src = "values.img" alt = "img">
-              <div class = "icon-main-list-content" style="{ backgroundColor:values.color }">
+      <!-- 主体 -->
+      <el-main id="main">
+        <!-- 图标列表 -->
+        <el-row id="icon-main">
+          <ul id="icon-main-list">
+            <li v-for="(values, index) in icon_list" :key="index" :style="{ backgroundColor: values.color }">
+              <img :src="values.img" alt="img" />
+              <div
+                  class="icon-main-list-content"
+              >
                 <h3>{{ values.title }}</h3>
-                <p v-for = "(desc,index) in values.desc">{{ desc }}</p>
+                <p v-for="(desc, index) in values.desc">{{ desc }}</p>
               </div>
             </li>
           </ul>
         </el-row>
-        
-        <el-row id = "text-boxs">
-          <el-row class = "item" v-for = "(values,index) in text_boxs" :key = "index">
-            <div class = "text-box" v-if = "index % 2 === 0">
-              <p class = "title">{{ values.title }}</p>
-              <p class = "desc">{{ values.desc }}</p>
+        <!-- 文本框列表 -->
+        <el-row id="text-boxs">
+          <el-row v-for="(values, index) in text_boxs" :key="index" class="item">
+            <div v-if="index % 2 === 0" class="text-box">
+              <p class="title">{{ values.title }}</p>
+              <p class="desc">{{ values.desc }}</p>
             </div>
-            <div class = "pic-box" v-if = "index % 2 === 0">
-              <img :src = "values.img" alt = "img" class = "pic">
+            <div v-if="index % 2 === 0" class="pic-box">
+              <img :src="values.img" alt="img" class="pic" />
             </div>
-            <div class = "pic-box" v-if = "index % 2 === 1">
-              <img :src = "values.img" alt = "img" class = "pic">
+            <div v-if="index % 2 === 1" class="pic-box">
+              <img :src="values.img" alt="img" class="pic" />
             </div>
-            <div class = "text-box" v-if = "index % 2 === 1">
-              <p class = "title">{{ values.title }}</p>
-              <p class = "desc">{{ values.desc }}</p>
+            <div v-if="index % 2 === 1" class="text-box">
+              <p class="title">{{ values.title }}</p>
+              <p class="desc">{{ values.desc }}</p>
             </div>
           </el-row>
         </el-row>
-      
       </el-main>
+      <!-- 底部 -->
+      <el-footer id="footer">
+        <div class="logo-box">
+          <ul>
+            <li><img /></li>
+            <li><img /></li>
+            <li><img /></li>
+          </ul>
+        </div>
+        <p id="copyring">
+          Copyright © 1998 -
+          2022 Tencent. All Rights Reserved.
+        </p>
+      </el-footer>
     </el-container>
-    <el-footer id = "footer">
-      <div class = "logo-box">
-        <ul>
-          <li><img></li>
-          <li><img></li>
-          <li><img></li>
-        </ul>
-      </div>
-      <p id = "copyring">Copyright © 1998 - 2022 Tencent. All Rights Reserved.</p>
-    </el-footer>
-    
   </div>
 </template>
 
-<script>
 
+<script>
+  
   export default {
     name: 'app-main',
     data() {
@@ -71,7 +78,7 @@
               '中文纠错',
               '英文纠错',
             ],
-            color:"#E2EDFE"
+            color: '#E2EDFE',
           },
           {
             img: require('@/assets/index/icon-2.png'),
@@ -81,7 +88,7 @@
               '网络例句',
               'AI续写',
             ],
-            color:"#E3F6F0"
+            color: '#E3F6F0',
           },
           {
             img: require('@/assets/index/icon-3.png'),
@@ -91,7 +98,7 @@
               '句子改写',
               '句子扩写',
             ],
-            color:"#F8F3E7"
+            color: '#F8F3E7',
           },
           {
             img: require('@/assets/index/icon-4.png'),
@@ -101,7 +108,7 @@
               '句子推荐',
               '句子生成',
             ],
-            color:"#EBE9FC"
+            color: '#EBE9FC',
           },
         ],
         text_boxs: [
@@ -177,17 +184,22 @@
           },
         ],
       };
-    }
+    },
   };
 </script>
 
-<style scoped lang = "scss">
+<style lang="scss" scoped>
   .el-container {
     width: 100%;
     overflow: hidden;
-    padding: 72px 10vw 0;
+    margin-top: 72px;
   }
   
+  #main{
+    padding: 0px 10vw;
+  }
+  
+  /* 头部 */
   #header {
     height: auto !important;
   }
@@ -212,6 +224,7 @@
     white-space: pre-line;
   }
   
+  /* 图标列表 */
   #icon-main {
     margin-top: 72px;
     
@@ -223,7 +236,7 @@
         padding: 72px 0 0 32px;
         
         h3 {
-          color: rgba(0, 0, 0, .8);
+          color: rgba(0, 0, 0, 0.8);
           font-size: 24px;
           font-weight: 500;
           margin-bottom: 12px;
@@ -241,7 +254,8 @@
       }
     }
     
-    li, ul {
+    li,
+    ul {
       list-style: none;
       padding: 0;
     }
@@ -250,7 +264,7 @@
       width: 240px;
       height: 251px;
       border-radius: 20px;
-      background: rgba(25, 121, 255, .1);
+      background: rgba(25, 121, 255, 0.1);
       position: relative;
       
       img {
@@ -260,13 +274,11 @@
         width: 88px;
         height: 88px;
       }
-      
     }
-    
   }
   
+  /* 文本框列表 */
   #text-boxs {
-    
     .item {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -278,6 +290,7 @@
       overflow: hidden;
       margin: 0 auto 40px;
       
+      /* 左侧文本框 */
       .text-box {
         margin-top: 90px;
         position: relative;
@@ -296,7 +309,7 @@
         
         .title {
           font-size: 30px;
-          color: rgba(0, 0, 0, .9);
+          color: rgba(0, 0, 0, 0.9);
           letter-spacing: 0;
           line-height: 47px;
           font-weight: 700;
@@ -313,18 +326,16 @@
           line-height: 32px;
           width: 446px;
         }
-        
       }
-      
+  
+      /* 右侧图片 */
       img {
         width: 586px;
       }
-      
     }
-    
-    
   }
-  
+
+  /* 底部 */
   #footer {
     width: 100%;
     height: 180px !important;
@@ -332,15 +343,33 @@
     overflow: hidden;
     margin-top: 97px;
     text-align: center;
+  }
+
+  .logo-box {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
     
-    #copyring {
-      font-size: 12px;
-      color: #fff;
-      letter-spacing: 0;
-      text-align: center;
-      margin-top: 22px;
+      li {
+        margin: 0 24px;
+        display: inline-block;
+      
+        img {
+          width: 72px;
+          height: 72px;
+        }
+      }
     }
   }
 
-
+  #copyring {
+    font-size: 12px;
+    color: #fff;
+    letter-spacing: 0;
+    text-align: center;
+    margin-top: 22px;
+  }
 </style>

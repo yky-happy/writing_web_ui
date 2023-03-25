@@ -1,6 +1,6 @@
 <template>
-  <div id="root">
-    <myheader :isdemo="true" />
+  <div id = "root">
+    <myheader :isdemo = "true" />
     <div id = "main">
       <myeditor />
       <myresponce />
@@ -12,6 +12,7 @@
   import myheader from '@/components/header.vue';
   import myeditor from './editor.vue';
   import myresponce from './responce.vue';
+  
   export default {
     name: 'demo',
     components: {
@@ -22,14 +23,14 @@
   };
 </script>
 
-<style scoped lang="scss">
-  #root{
+<style lang = "scss" scoped>
+  #root {
     padding: 0 6vw;
     
-    #main{
+    #main {
       background: #f8fafe;
       border-radius: 12px;
-  
+      
       position: relative;
       display: -webkit-box;
       display: -ms-flexbox;

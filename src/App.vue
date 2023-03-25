@@ -18,18 +18,18 @@
     margin: 0;
     padding: 0;
   }
-
+  
   /* 滚动条样式 */
   ::-webkit-scrollbar {
-    width: 8px;
     height: 8px;
+    width: 8px;
   }
-
+  
   ::-webkit-scrollbar-track {
     background-color: rgba(73, 177, 245, 0.2);
     border-radius: 2em;
   }
-
+  
   ::-webkit-scrollbar-thumb {
     background-color: #1979FF;
     background-image: -webkit-linear-gradient(45deg,
@@ -42,14 +42,14 @@
     transparent);
     border-radius: 2em;
   }
-
+  
   ::-webkit-scrollbar-corner {
     background-color: transparent;
   }
-
+  
   ::-moz-selection {
-    color: #fff;
     background-color: #1979FF;
+    color: #fff;
   }
 
 </style>
